@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Culte de la Sainte Douche</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #c2f5ff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .symbol-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .symbol {
+      font-size: 80px;
+      animation: float 3s ease-in-out infinite, pulse 3s ease-in-out infinite;
+      text-shadow: 0 0 20px #00ffffaa;
+    }
+
+    .rays {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(0,255,255,0.2) 0%, transparent 80%);
+      border-radius: 50%;
+      animation: rays-anim 6s linear infinite;
+      z-index: 1;
+      top: calc(50% - 100px);
+      left: calc(50% - 100px);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes rays-anim {
+      0% { transform: rotate(0deg); opacity: 0.4; }
+      100% { transform: rotate(360deg); opacity: 0.4; }
+    }
+
+    .terminal {
+      background-color: #111;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px #00ffff55;
+      max-width: 90%;
+      width: 600px;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .line {
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: transparent;
+      color: #00ffff;
+      border: 2px solid #00ffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00ffff22;
+    }
+
+    .blessing {
+      display: none;
+      margin-top: 20px;
+      color: #a0ffe0;
+      font-style: italic;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #satanicScreen {
+      display: none;
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: radial-gradient(circle at center, #300 0%, #100 100%);
+      color: #ff4444;
+      font-family: 'Courier New', monospace;
+      z-index: 9999;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .satanic-symbol {
+      position: absolute;
+      font-size: 24px;
+      color: #ff2222;
+      opacity: 0.7;
+      animation: moveSymbol 6s linear infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes moveSymbol {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(50px, -50px) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    #satanicMessage {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px #ff0000;
+    }
+
+    #submitButton {
+      font-size: 20px;
+      background-color: #fff0f0;
+      color: #8b0000;
+      padding: 15px 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    #submitButton:hover {
+      background-color: #ff9999;
+    }
+
+    #yeecScreen {
+      display: none;
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: #ffffff;
+      color: #000000;
+      font-family: 'Courier New', monospace;
+      z-index: 9998;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 100px;
+    }
+
+    #yeecMessage {
+      font-size: 80px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    #backButton {
+      margin-top: 30px;
+      font-size: 18px;
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .shark {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      width: 100px;
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+  <div class="rays"></div>
+  <div class="symbol-container">
+    <div class="symbol">S∆D</div>
+  </div>
+
+  <img id="sharkImage" src="" class="shark" onclick="showYeec()" title="Clique-moi"/>
+
+  <div class="terminal">
+    <div class="line">Connexion au noyau sacré...</div>
+    <div class="line">Authentification en cours...</div>
+    <div class="line">Accès accepté.</div>
+    <div class="line">Bienvenue, Initié(e) de la Sainte Douche.</div>
+    <div class="line mantra">« Que l'eau te guide, que le savon te protège, que l'odeur te quitte. »</div>
+
+    <button onclick="bless()">Recevoir la bénédiction</button>
+    <div id="blessing" class="blessing">Tu es désormais purifié(e) par les eaux de la Sainte Douche.</div>
+    <audio id="blessSound" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Spray.ogg"></audio>
+  </div>
+
+  <div id="satanicScreen">
+    <div id="satanicMessage">TU AS ÉNERVÉ LE SULTAN !</div>
+    <button id="submitButton">Soumets-toi pour purger tes erreurs</button>
+  </div>
+
+  <div id="yeecScreen">
+    <div id="yeecMessage">YEEC</div>
+    <button id="backButton" onclick="backToBase()">Retour</button>
+  </div>
+
+  <script>
+    let clickCount = 0;
+    const maxClicks = 10;
+    const satanicScreen = document.getElementById('satanicScreen');
+    const yeecScreen = document.getElementById('yeecScreen');
+    const submitButton = document.getElementById('submitButton');
+    const blessingMessage = document.getElementById('blessing');
+    const blessSound = document.getElementById('blessSound');
+    const terminal = document.querySelector('.terminal');
+    const symbolContainer = document.querySelector('.symbol-container');
+    const rays = document.querySelector('.rays');
+    const sharkImage = document.getElementById('sharkImage');
+
+    const sharkImages = [
+      '100_Cochon.png',
+      '100_Crocodile.png',
+      '100_Grenouille.png',
+      '100_Lapin.png',
+      '100_Renard.png',
+	  '100_Tanuki.png'
+    ];
+
+    window.onload = () => {
+      const randomIndex = Math.floor(Math.random() * sharkImages.length);
+      sharkImage.src = sharkImages[randomIndex];
+    };
+
+    function createSatanicSymbols() {
+      const symbols = ['ᚱ', 'ᛗ', 'ᛚ', 'ᛟ', 'ᛣ', '᛫', '᛭', 'ᛰ'];
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      for(let i=0; i < 66; i++) {
+        const sym = document.createElement('div');
+        sym.classList.add('satanic-symbol');
+        sym.style.left = Math.random() * screenWidth + 'px';
+        sym.style.top = Math.random() * screenHeight + 'px';
+        sym.style.fontSize = (14 + Math.random() * 28) + 'px';
+        sym.style.animationDuration = (4 + Math.random() * 3) + 's';
+        sym.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        satanicScreen.appendChild(sym);
+      }
+    }
+
+    function clearSatanicSymbols() {
+      const syms = satanicScreen.querySelectorAll('.satanic-symbol');
+      syms.forEach(s => s.remove());
+    }
+
+    function bless() {
+      clickCount++;
+      if (clickCount >= maxClicks) {
+        clearSatanicSymbols();
+        createSatanicSymbols();
+        satanicScreen.style.display = 'block';
+        terminal.style.display = 'none';
+        symbolContainer.style.display = 'none';
+        rays.style.display = 'none';
+        sharkImage.style.display = 'none';
+        return;
+      }
+
+      blessingMessage.style.display = 'block';
+      blessSound.volume = 0.4;
+      blessSound.play();
+    }
+
+    submitButton.onclick = function() {
+      clickCount = 0;
+      satanicScreen.style.display = 'none';
+      terminal.style.display = 'block';
+      symbolContainer.style.display = 'flex';
+      rays.style.display = 'block';
+      sharkImage.style.display = 'block';
+      blessingMessage.style.display = 'none';
+      clearSatanicSymbols();
+    }
+
+    function showYeec() {
+      terminal.style.display = 'none';
+      symbolContainer.style.display = 'none';
+      rays.style.display = 'none';
+      sharkImage.style.display = 'none';
+      yeecScreen.style.display = 'flex';
+    }
+
+    function backToBase() {
+      yeecScreen.style.display = 'none';
+      terminal.style.display = 'block';
+      symbolContainer.style.display = 'flex';
+      rays.style.display = 'block';
+      sharkImage.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
